@@ -31,6 +31,13 @@
                     <textarea name="content" class="form-control" id="content" name="content" value="{{old('content')}}"></textarea>
                 </div>
                 
+                @foreach ($tags as $tag)
+                <div class="custom-control custom-checkbox mt-3 mb-3">
+                    <input name="tags[]" type="checkbox" class="custom-control-input" id="tag_{{$tag->id}}" value="{{$tag->id}}" {{in_array($tag->id, old('tags', []))?'checked': ''}}>
+                    <label class="custom-control-label" for="tag_{{$tag->id}}">{{$tag->name}}</label>
+                </div>
+                @endforeach
+                
                 <button type="submit" class="btn btn-primary">Salva</button>
               </form>
 

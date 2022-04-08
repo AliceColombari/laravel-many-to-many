@@ -5,7 +5,6 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
 
-                <a href="{{route('admin.categories.create')}}" class="btn btn-primary my-3">Crea una categoria</a>
 
                 <table class="table">
                     <thead>

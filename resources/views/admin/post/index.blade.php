@@ -27,7 +27,7 @@
                             <td>{{substr($post->content, 0, 30)}}</td>
                             <td>{{$post->slug}}</td>
                             {{-- risolto problema se utente non seleziona nessuna categoria --}}
-                            <td>{{isset($post->category)?$post->category->name: 'N.D.')}}</td>
+                            <td>{{isset($post->category)?$post->category->name:'N.D.'}}</td>
                             <td class="d-flex justify-content-between">
                                 <a href="{{route('admin.posts.show', $post->id)}}" class="btn btn-primary">Vedi</a>
                                 <a href="{{route('admin.posts.edit', $post->id)}}" class="btn btn-secondary">Modifica</a>

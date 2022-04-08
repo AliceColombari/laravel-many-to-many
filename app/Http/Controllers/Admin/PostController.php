@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
+use App\Tag;
 use Illuminate\Support\Str;
 use Doctrine\Inflector\Rules\Word;
 
@@ -32,7 +33,8 @@ class PostController extends Controller
     {
         // voglio ottenere tutte le categorie e poter tornare tutte le categorie del db
         $categories = Category::all();
-        return view('admin.post.create', compact('categories'));
+        $tags = Tag::all();
+        return view('admin.post.create', compact('categories', 'tags'));
     }
 
     /**
@@ -49,7 +51,8 @@ class PostController extends Controller
             [
                 'title'=>'required|min:5',
                 'content'=>'required|min:10',
-                'category_id' => 'nullable|exists:categories,id'
+                'category_id' => 'nullable|exists:categories,id',
+                'tags' => 'nullable|exists:tags,id'
             ]
         );
 
@@ -74,6 +77,10 @@ class PostController extends Controller
             $post = new Post();
             $post->fill($data);
             $post->save();
+
+            // voglio che siano create le varie voci
+            $post->tags()->sync($data['tags']);
+
             return redirect()->route('admin.posts.index');
     }
 
@@ -100,7 +107,9 @@ class PostController extends Controller
         //
         $categories = Category::all();
 
-        return view('admin.post.edit', compact('post', 'categories'));
+        $tags = Tag::all();
+
+        return view('admin.post.edit', compact('post', 'categories', 'tags'));
     }
 
     /**
