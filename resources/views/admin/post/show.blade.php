@@ -11,6 +11,12 @@
             <div><strong>Slug: </strong>{{$post->slug}}</div>
             <div><strong>Categoria: </strong> {{$post->category->name}}</div>
 
+            <div>
+                @foreach ($post->tags as $tag)
+                    <span class="badge badge-primary mt-3">{{$tag->name}}</span>
+                @endforeach
+            </div>
+
             <a href="{{route('admin.posts.index')}}" class="btn btn-primary mt-3">Torna alla lista</a>
         </div>
     </div>

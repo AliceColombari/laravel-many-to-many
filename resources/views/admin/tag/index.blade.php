@@ -21,13 +21,11 @@
                             <td>{{$tag->id}}</td>
                             <td>{{$tag->name}}</td>
                             <td>{{$tag->slug}}</td>
-                            <td class="d-flex justify-content-between">
+                           
                                 <td>
                                     <a href="{{route('admin.tags.show', $tag->id)}}" class="btn btn-primary">Vedi</a>                                                         
                                 </td>    
-                                </form>
-
-                            </td>
+                            
                         </tr>
                     @endforeach
                 </tbody>

@@ -19,7 +19,7 @@
                 </ul>
             </div>
 
-            <a href="{{route('admin.tags.index')}}" class="btn btn-primary mb-3">Torna alla lista</a>
+            <a href="{{route('admin.tags.index')}}" class="btn btn-primary mt-3 mb-3">Torna alla lista</a>
         </div>
     </div>
 </div>
